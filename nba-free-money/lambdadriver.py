@@ -163,7 +163,3 @@ def my_handler(event, context):
     # post it to groupme
     print(post_text(bot_string))
     print("posted to groupme")
-
-
-if __name__ == "__main__":
-    main()
