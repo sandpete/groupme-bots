@@ -1,5 +1,9 @@
 # groupme-bots
-A collection of bots that interact with the Groupme chat service. Each of these are running as a Python 3.7 AWS Lambda function. At some point I'll post more details about the architecture. Keep in mind some of the API keys and other sensitive variables are stored as Lambda environment variables.
+A collection of bots that interact with the Groupme chat service. Each of these are running as a Python 3.7 AWS Lambda function. Keep in mind some of the API keys and other sensitive variables are stored as Lambda environment variables.
+
+*To Do*
+* Post more details about architecture
+* Explain dependencies/upload zips (huge pain point in getting this to prod)
 
 ## Message Responder
 
