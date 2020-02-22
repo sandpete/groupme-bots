@@ -6,8 +6,7 @@ import json
 import os
 from decimal import Decimal, ROUND_UP
 
-
-
+# initialize a few env vars
 accessToken = os.environ['groupme_access_key']
 groupno = os.environ['group_num']
 
