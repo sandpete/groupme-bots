@@ -96,20 +96,15 @@ def stonks(ticker):
         drawing = svg2rlg(stock_svg)
         # convert the Drawing object to a PNG
         renderPM.drawToFile(drawing, stock_png)
-        # post this image to groupme's image service
-        img_url = post_image(stock_png)
-        # make the post to the group chat with the image embedded.
-        # the function returns a status code so it'll print the number
-        print(post_img_attachment(img_url))
+
+        return stock_png
 
 
 
 def get_stock(msg_text):
     # makes a regex match on the first stock it sees
     # does not work for multiple tickers
-    input_txt = re.findall(r'[$][A-Za-z][\S]*', str(msg_text))
-    # strip out punctuation
-    stock_tick = re.sub(r'[^\w\s]','',input_txt)
+    stock_tick = re.findall(r'[$][A-Za-z][\S]*', str(msg_text))
     
     # make sure it's not an empty result
     if len(stock_tick) > 0:
@@ -117,7 +112,11 @@ def get_stock(msg_text):
         first_hit = stock_tick[0]
         # strips out the first character (i.e., the dollar sign)
         stock_strip = first_hit[1:]
+        # strip out punctuation
+        stock_no_punc = re.sub(r'[^\w\s]','',stock_strip)
         # makes it upper case
-        ticker = stock_strip.upper()
+        ticker = stock_no_punc.upper()
         # send to the processing function
-        stonks(ticker)
+        img_location = stonks(ticker)
+        # send the image back to the driver
+        return img_location

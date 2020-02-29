@@ -165,6 +165,7 @@ def my_handler(event, context):
         elif "@help" in input_text:
             intro = "I recognize the following:\n"
             options = """@photo will grab a random photo from the history
+                        \n@video will grab a random vid from the history
                         \n@analyze (attach pic or paste URL)
                         \n@odds
                         \n@crypto (+ help for more info) along with the coin name
@@ -174,7 +175,12 @@ def my_handler(event, context):
             msg = intro + options
             post_text(msg)
         elif "$" in input_text:
-            stock_price = stonks.get_stock(input_text)
-            post_text(stock_price)
+            # create a local file with the PNG chart
+            local_img_path = stonks.get_stock(input_text)
+            # send the file to the groupme image upload service
+            img_url = post_image(local_img_path)
+            # post the message to the chat and print the status code
+            print(post_img_attachment(img_url))
         elif "@bot" in input_text:
-            post_text("use @help to see what I do. otherwise, cuck off")
+            post_text("use @help to see what I do")
+
