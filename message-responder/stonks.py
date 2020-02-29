@@ -109,7 +109,7 @@ def get_stock(msg_text):
     # does not work for multiple tickers
     input_txt = re.findall(r'[$][A-Za-z][\S]*', str(msg_text))
     # strip out punctuation
-    stock_tick = re.sub(r'[^\w\s]','',s)
+    stock_tick = re.sub(r'[^\w\s]','',input_txt)
     
     # make sure it's not an empty result
     if len(stock_tick) > 0:
