@@ -28,6 +28,6 @@ def videoboi():
         rand_line = data[rand_val][0]
 
     # add the full URL
-    pic_url = video_url_format + rand_line
+    video_url = video_url_format + rand_line
 
     return video_url
