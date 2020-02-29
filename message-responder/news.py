@@ -38,9 +38,10 @@ def get_news(input_text):
 
     # URL endpoints for the API. we will establish source below
     news_url = "https://newsapi.org/v2/top-headlines?sources="
+    param = "&apiKey="
 
     try:
-        r = requests.get(news_url + source + api_key)
+        r = requests.get(news_url + source + param + api_key)
         print(r.status_code)
     except requests.exceptions.ConnectionError:
         print('Error')
