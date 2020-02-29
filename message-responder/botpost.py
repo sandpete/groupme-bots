@@ -8,6 +8,7 @@ import news
 import crypto
 import stonks
 import analyze
+import videoboi
 
 # initialize a few env vars
 accessToken = os.environ['groupme_access_key']
@@ -145,6 +146,11 @@ def my_handler(event, context):
                 post_text(msg_val)
             else:
                 post_text(url_val)
+        # videoboi handler
+        elif "@video" in input_text:
+            # gets the video URL and posts it
+            vid_url = videoboi.videoboi()
+            post_text(vid_url)
         # odds handler
         elif "@odds" in input_text:
             # generate random number and post it
@@ -172,4 +178,3 @@ def my_handler(event, context):
             post_text(stock_price)
         elif "@bot" in input_text:
             post_text("use @help to see what I do. otherwise, cuck off")
-
