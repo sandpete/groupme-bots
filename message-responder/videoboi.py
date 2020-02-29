@@ -2,7 +2,6 @@ import os
 import csv
 import random
 
-
 def videoboi():
     # we have a videos csv file that contains all the video URLs.
     # this will open the file
@@ -15,15 +14,20 @@ def videoboi():
     with open(file_path) as csvfile:
         reader = csv.reader(csvfile)
         # get row count
-        row_count = sum(1 for line in f)
+        row_count = sum(1 for line in reader)
         # picks a random number between 0 and the row_count.
         # this is how we select the image to obtain.
         rand_val = random.randint(0, row_count)
 
-        # grab the value from the random row value
-        line = next((x for i, x in enumerate(reader) if i == rand_val), None)
+    # i kept getting errors trying to read the same file, so we'll close
+    # it out and open it again
+    with open(file_path) as csvfile:
+        # turns the CSV into a list
+        data=list(csv.reader(csvfile))
+        # grab the random line value
+        rand_line = data[rand_val][0]
 
     # add the full URL
-    pic_url = video_url_format + line[0]
+    pic_url = video_url_format + rand_line
 
     return video_url
