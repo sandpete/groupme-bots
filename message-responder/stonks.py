@@ -9,7 +9,7 @@ from datetime import date
 from datetime import datetime
 
 # get lambda env var
-api_key = os.environ['news_api_key']
+api_key = os.environ['stock_api_key']
 
 
 def stonks(ticker):
