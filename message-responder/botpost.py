@@ -9,6 +9,7 @@ import crypto
 import stonks
 import analyze
 import videoboi
+import booter
 
 # initialize a few env vars
 accessToken = os.environ['groupme_access_key']
@@ -181,6 +182,9 @@ def my_handler(event, context):
             img_url = post_image(local_img_path)
             # post the message to the chat and print the status code
             print(post_img_attachment(img_url))
-        elif "@bot" in input_text:
-            post_text("use @help to see what I do")
+        elif "@pandemic" in input_text:
+            # initiate boot sequence
+            print("## INPUT DATA")
+            print(event)
+            print(booter.boot_sequence(event))
 
